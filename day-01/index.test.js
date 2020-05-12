@@ -6,6 +6,14 @@ describe('addFive', () => {
   it('adds five', () => {
     expect(addFive(6)).toEqual(11);
   })
+
+  it('returns a truthy value', () => {
+    expect(addFive(6)).toBeTruthy();
+  })
+
+  it('doesn`t return a falsy value', () => {
+    expect(addFive(6)).not.toBeFalsy();
+  })
 })
 
 describe('addFiveConditional', () => {
