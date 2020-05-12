@@ -1,0 +1,15 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "meself",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "jest": "^26.0.1"
+  }
+}
