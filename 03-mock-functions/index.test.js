@@ -1,6 +1,8 @@
+const axios = require('axios');
 const myFunctions = require('./index');
 const myMapFn = myFunctions.myMapFn;
 
+//create a mock function
 const mockAdder = jest.fn(x => x + 1);
 
 describe('myMapFn', () => {
@@ -24,9 +26,24 @@ describe('myMapFn', () => {
   })
 })
 
+//provide mock return value for a function
 const dummyFunction = jest.fn();
 
 describe('dummyFunction', () => {
   dummyFunction.mockReturnValue({name: 'david'});
   expect(dummyFunction().name).toBe('david');
+})
+
+//mock a module
+jest.mock('axios');
+
+describe('a dummy api call', () => {
+  const response = {name: 'david'};
+  axios.get.mockResolvedValue({data: response});
+
+  it('returns the dummy data', () => {
+    return axios.get('https://url.com').then(response => {
+      expect(response.data.name).toBe('david');
+    })
+  })
 })
