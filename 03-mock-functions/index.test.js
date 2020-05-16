@@ -23,3 +23,10 @@ describe('myMapFn', () => {
     expect(mockAdder.mock.results[2].value).toBe(4);
   })
 })
+
+const dummyFunction = jest.fn();
+
+describe('dummyFunction', () => {
+  dummyFunction.mockReturnValue({name: 'david'});
+  expect(dummyFunction().name).toBe('david');
+})

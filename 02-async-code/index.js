@@ -10,7 +10,7 @@ function myPromise(input) {
       if (input % 2 === 0) {
         resolve('the number is even');
       } else reject('this is an odd number');
-    }, 3000)
+    }, 1000)
   })
 }
 
