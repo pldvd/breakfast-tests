@@ -57,3 +57,24 @@ describe('a dummy api call', () => {
     })
   })
 })
+
+//mock function implementation
+const mockGreeter = jest.fn().mockImplementation((name = 'world') => `Hello ${name}`);
+
+describe('mockGreeter', () => {
+  test('calling mockGreeter with default name value', () => {
+    const message = mockGreeter();
+    expect(mockGreeter.mock.calls.length).toBe(1);
+    expect(mockGreeter.mock.calls[0][0]).toBe(undefined);
+    expect(message).toMatch(/hello world/i);
+  })
+
+  test('calling mockGreeter with defined name', () => {
+    const message = mockGreeter('David');
+    expect(mockGreeter).toHaveBeenCalledTimes(2);
+    expect(mockGreeter.mock.calls[1][0]).toMatch(/david/i);
+    expect(mockGreeter).toHaveBeenCalledWith('David');
+    expect(mockGreeter.mock.results[1].value).toBe('Hello David');
+    expect(mockGreeter).toHaveReturnedWith('Hello David');
+  })
+})
