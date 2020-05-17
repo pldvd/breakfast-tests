@@ -34,6 +34,16 @@ describe('dummyFunction', () => {
   expect(dummyFunction().name).toBe('david');
 })
 
+const dummyFunctionTwo = jest.fn();
+
+describe('dummyFunctionTwo', () => {
+  dummyFunctionTwo.mockReturnValue('hello');
+  const greeting = dummyFunctionTwo();
+
+  expect(dummyFunctionTwo).toHaveBeenCalledTimes(1);
+  expect(greeting).toMatch(/hello/);
+})
+
 //mock a module
 jest.mock('axios');
 
