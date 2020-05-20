@@ -1,6 +1,7 @@
 const axios = require('axios');
 const myFunctions = require('./index');
 const myMapFn = myFunctions.myMapFn;
+const counterReducer = myFunctions.counterReducer;
 
 //create a mock function
 const mockAdder = jest.fn(x => x + 1);
@@ -77,5 +78,15 @@ describe('mockGreeter', () => {
     expect(mockGreeter).toHaveBeenCalledWith('David');
     expect(mockGreeter.mock.results[0].value).toBe('Hello David');
     expect(mockGreeter).toHaveReturnedWith('Hello David');
+  })
+})
+
+describe('counter reducer', () => {
+  const mockActionCreator = jest.fn();
+
+  it('returns 0 if called with two empty object', () => {
+    mockActionCreator.mockReturnValueOnce({});
+    expect(counterReducer(mockActionCreator())).toBe(0);
+    expect(mockActionCreator.mock.calls.length).toBe(1);
   })
 })
