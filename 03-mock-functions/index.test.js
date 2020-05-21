@@ -95,4 +95,11 @@ describe('counter reducer', () => {
     expect(counterReducer(mockActionCreator(), 5)).toBe(6);
     expect(mockActionCreator.mock.calls).toHaveLength(2);
   })
+
+  it('returns the right number when called with action.type decrement', () => {
+    mockActionCreator.mockReturnValueOnce({type: 'decrement'});
+    expect(counterReducer(mockActionCreator())).toBe(-1);
+    expect(mockActionCreator.mock.calls.length).toBeLessThan(4);
+    expect(mockActionCreator.mock.calls.length).toBeGreaterThan(2);
+  })
 })
